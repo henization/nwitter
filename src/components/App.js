@@ -1,8 +1,17 @@
-import React from "react";
-import Routers from "./Routers";
+import React, { useState } from "react";
+import Routers from "components/Routers";
+import { authService } from "myBase";
 
 function App() {
-  return <Routers />;
+  console.log(authService.currentUser);
+  const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
+
+  return (
+    <>
+      <Routers isLoggedIn={isLoggedIn} />
+      <footer>&copy; {new Date().getFullYear()} Nwitter</footer>
+    </>
+  );
 }
 
 export default App;
